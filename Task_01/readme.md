@@ -14,7 +14,7 @@ Flag	Description
 3) -oN network_scan.txt	Saves the output in a normal text format to a file named network_scan.txt.
 
 📄 Output Description
-• The output file (network_scan.txt) contains:
+• The output file (network_scan.txt) contains:           
 • A list of active hosts discovered in the subnet.
 • Information about open ports and running services for each host.
 • Scan summary including total hosts scanned and time taken.
