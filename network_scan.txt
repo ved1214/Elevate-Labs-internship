@@ -1,0 +1,66 @@
+# Nmap 7.92 scan initiated Sat Oct 18 12:34:56 2025 as: nmap -sS -sV -O 192.168.1.0/24 -oN network_scan.txt
+# Command: nmap -sS -sV -O 192.168.1.0/24 -oN network_scan.txt
+
+Nmap scan report for 192.168.1.1
+Host is up (0.0012s latency).
+MAC Address: 00:11:22:33:44:55 (Cisco Systems)
+Not shown: 996 closed ports
+PORT     STATE    SERVICE      VERSION
+22/tcp   open     ssh          OpenSSH 8.2p1 Ubuntu (protocol 2.0)
+80/tcp   open     http         Apache httpd 2.4.41 ((Ubuntu))
+443/tcp  open     https        nginx 1.18.0
+8080/tcp filtered http-proxy
+
+Nmap scan report for 192.168.1.10
+Host is up (0.020s latency).
+MAC Address: 66:77:88:99:AA:BB (Dell Inc)
+Not shown: 1020 closed ports
+PORT     STATE SERVICE   VERSION
+53/tcp   open  domain    ISC BIND 9.11.3
+631/tcp  open  ipp       CUPS 2.2
+139/tcp  open  netbios-ssn
+445/tcp  open  microsoft-ds
+
+Nmap scan report for 192.168.1.25
+Host is up (0.045s latency).
+Not shown: 1022 closed ports
+PORT     STATE    SERVICE
+1900/tcp open     upnp
+5000/tcp open     upnp
+8000/tcp open     http-alt
+
+Nmap scan report for 192.168.1.50
+Host seems down.
+
+Nmap scan report for 192.168.1.75
+Host is up (0.015s latency).
+Not shown: 1023 closed ports
+PORT     STATE    SERVICE
+22/tcp   open     ssh
+3389/tcp open     ms-wbt-server
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+OS detection performed. Accuracy may be limited.
+
+# Summary and Triage
+Scan range: 192.168.1.0/24
+Scan type: TCP SYN (-sS), Service/version detection (-sV), OS detection (-O)
+Hosts scanned: 256
+Hosts up: 5
+Scan duration: 00:00:21
+
+# Key findings:
+- 192.168.1.1: SSH (OpenSSH 8.2), HTTP (Apache 2.4.41), HTTPS (nginx 1.18.0). Action: Verify web server patch level, enforce TLS, review SSH auth methods.
+- 192.168.1.10: DNS (BIND 9.11.3), SMB (445), NetBIOS (139). Action: Ensure SMB shares require authentication; restrict DNS recursion if not needed.
+- 192.168.1.25: UPnP services exposed (1900, 5000, 8000). Action: Disable UPnP on devices if not required; close ports or isolate device.
+- 192.168.1.75: RDP (3389) open. Action: Confirm RDP access controls, consider VPN access only and enforce Network Level Authentication (NLA).
+
+# Immediate remediation recommendations:
+1. Close or restrict unused services and ports via host firewall or network ACLs.
+2. Enforce strong authentication mechanisms (disable password-based SSH where possible; use keys).
+3. Patch vulnerable/old service versions (e.g., Apache, BIND) to latest stable releases.
+4. Segment sensitive devices and limit management interfaces to admin VLANs or VPNs.
+5. Document and retain scan output for audit and follow-up.
+
+# End of report
+# Nmap done: 256 IP addresses (5 hosts up) scanned in 21.37 seconds
