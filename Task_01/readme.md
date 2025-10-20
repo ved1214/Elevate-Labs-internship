@@ -18,3 +18,8 @@ Flag	Description
 • A list of active hosts discovered in the subnet.     
 • Information about open ports and running services for each host.       
 • Scan summary including total hosts scanned and time taken.
+
+📸 Supporting Files       
+network_scan.txt  ->  Main output file generated from the Nmap scan.     
+scan_output_1.png -> Screenshot showing terminal command execution.        
+scan_output_2.png -> Screenshot showing result summary
