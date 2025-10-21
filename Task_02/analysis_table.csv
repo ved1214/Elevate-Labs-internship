@@ -1,0 +1,9 @@
+Indicator,Observation,Evidence,RiskLevel,Recommendation
+"Spoofed Sender Domain","Sender domain visually mimics vendor (e.g., secure-paypall.example.com vs paypal.com)","From header in spoofing mail.pdf","High","Block domain at gateway; quarantine matching messages; report to vendor"
+"SPF Authentication Failed","Received-SPF: fail for origin IP (example)","Header analysis screenshot","High","Enforce SPF/DKIM/DMARC; quarantine failures; notify SOC"
+"Urgent/Threatening Language","'Verify within 24 hours' / account suspension threat","Email body (plain & HTML)","High","User awareness; simulated phishing training; highlight urgency as red flag"
+"Suspicious URLs","Links point to non-vendor hostnames (verify-paypal.example.com)","extracted_urls.txt","High","Do not click; block hostname via DNS/WAF; analyze in sandbox"
+"Attachment Present","Invoice attachment referenced (invoice_*.pdf)","Email body; attachment metadata","High","Analyze only in isolated sandbox; do not open on primary host"
+"Generic Greeting","Uses 'Dear Customer' instead of personalized name","Email body","Medium","Use in user training material as an indicator"
+"External Image Host","Images hosted on third-party hosts (images.example.com)","HTML part img src","Medium","Block external resource loading via mail gateway or rewrite URLs"
+"HTML/Plain Text Mismatch","Different link presentation between text and HTML parts","Compare plain vs html parts","Medium","Flag for suspicious composition; require manual triage"
